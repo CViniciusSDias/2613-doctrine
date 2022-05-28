@@ -36,4 +36,6 @@ foreach ($studentList as $student) {
 }
 
 $dql = "SELECT COUNT(student) FROM Alura\Doctrine\Entity\Student student WHERE student.phones IS EMPTY";
-var_dump($entityManager->createQuery($dql)->getSingleScalarResult());
+$query = $entityManager->createQuery($dql)->enableResultCache(86400);
+$singleScalarResult = $query->getSingleScalarResult();
+var_dump($singleScalarResult);
